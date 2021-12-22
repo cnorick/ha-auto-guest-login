@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        html {
+            background-color: #3f51b5;
+            color: white;
+        }
+        body {
+            font-family: Tahoma, sans-serif
+        }
+        .main {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 80px;
+            padding: 1em;
+        }
+        .title {
+            animation: color-change 3s infinite;
+        }
+        @keyframes color-change {
+            0% { color: #FFF; }
+            5% { color: #ffbcbc}
+            10% { color: #ffdabc}
+            20% { color: #fff3bc}
+            20% { color: #fff8bc}
+            25% { color: #f3ffbc}
+            30% { color: #bcffd0}
+            35% { color: #bcffeb}
+            40% { color: #bcf5ff}
+            45% { color: #bcd9ff}
+            50% { color: #bcc8ff}
+            55% { color: #c3bcff}
+            60% { color: #f7bcff}
+            65% { color: #ffbce5}
+            70% { color: #ffbccd}
+            75% { color: #ffbcbc}
+        }
+    </style>
+
+<script>
+    const minTime = 10000; // So guests can enjoy your welcome page before being redirected.
+    const startTime = (new Date()).getTime();
+    fetch('/api/getRedirectUri')
+    .then(res => res.text())
+    .then(uri => {
+        const endTime = (new Date()).getTime();
+        const elapsedTime = endTime - startTime;
+        const delay = Math.max(minTime - elapsedTime, 0);
+        setTimeout(() => window.location.replace(uri), delay);
+    });
+</script>
+
+</head>
+<body>
+    <div class="main">
+        <h1 class="title">Thanks for Visiting</h1>
+        Redirecting to Home Assistant...
+    </div>
+</body>
+</html>

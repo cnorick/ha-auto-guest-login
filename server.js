@@ -3,7 +3,7 @@ import express from "express"
 
 const haUrl = "http://homeassistant.local";
 const clientId = "http://homeassistant.local/";
-const dashboard = "lovelace-guest";
+const defaultDashboard = "lovelace-guest";
 const guestUserName = "guest";
 const guestPassword = "password";
 const port = 80;
@@ -48,8 +48,8 @@ async function getCode() {
   return (await response.json()).result;
 }
 
-function createRedirectUri(code) {
-  let uri = `${haUrl}/${encodeURIComponent(dashboard)}?auth_callback=1`;
+function createRedirectUri(code, dashboard) {
+  let uri = `${haUrl}/${(dashboard)}?auth_callback=1`;
   uri.includes("?") ? uri.endsWith("&") || (uri += "&") : (uri += "?");
   uri += `code=${encodeURIComponent(code)}`;
   uri += `&state=${encodeURIComponent(getState())}`;
@@ -57,9 +57,9 @@ function createRedirectUri(code) {
   return uri
 }
 
-async function getRedirectUri() {
+async function getRedirectUri(userProvidedDashboard) {
   var code = await getCode();
-  var uri = createRedirectUri(code);
+  var uri = createRedirectUri(code, userProvidedDashboard ?? defaultDashboard);
   return uri;
 }
 
@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
   res.sendFile("index.html", { root: '.' });
 })
 app.get('/api/getRedirectUri', async (req, res) => {
-  res.send(await getRedirectUri())
+  res.send(await getRedirectUri(req.query.dashboard))
 })
 
 app.listen(port, () => {

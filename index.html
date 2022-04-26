@@ -45,16 +45,33 @@
     </style>
 
 <script>
-    const minTime = 10000; // So guests can enjoy your welcome page before being redirected.
     const startTime = (new Date()).getTime();
-    fetch('/api/getRedirectUri')
+    const dashboard = getDashboardFromUrl();
+    fetch(getRequestUri(dashboard))
     .then(res => res.text())
-    .then(uri => {
+    .then(uri => redirectAfterTimeout(startTime, dashboard, uri));
+
+    function getRequestUri(dashboard) {
+        return dashboard ? `/api/getRedirectUri?dashboard=${dashboard}` : `/api/getRedirectUri`;
+    }
+
+    function redirectAfterTimeout(startTime, dashboard, uri) {
+        const minTime = 10000; // So guests can enjoy your welcome page before being redirected.
         const endTime = (new Date()).getTime();
         const elapsedTime = endTime - startTime;
-        const delay = Math.max(minTime - elapsedTime, 0);
-        setTimeout(() => window.location.replace(uri), delay);
-    });
+
+        let delay = Math.max(minTime - elapsedTime, 0);
+
+        // If we specify a specific dashboard, don't wait.
+        if (dashboard) delay = 0;
+
+        setTimeout(() => window.location.replace((uri)), delay);
+    }
+
+    function getDashboardFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('dashboard');
+    }
 </script>
 
 </head>

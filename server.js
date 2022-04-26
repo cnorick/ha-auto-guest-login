@@ -59,7 +59,7 @@ function createRedirectUri(code, dashboard) {
 
 async function getRedirectUri(userProvidedDashboard) {
   var code = await getCode();
-  var uri = createRedirectUri(code, userProvidedDashboard ?? defaultDashboard);
+  var uri = createRedirectUri(code, userProvidedDashboard || defaultDashboard);
   return uri;
 }
 

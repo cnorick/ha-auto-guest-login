@@ -7,7 +7,6 @@ ENV DOCKER_ENV=true
 COPY server.js server.js
 COPY index.html index.html
 COPY . .
-RUN npm run build
 RUN npm link
 EXPOSE 80
 CMD [ "node", "server.js" ]

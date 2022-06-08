@@ -3,6 +3,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 WORKDIR /config
-COPY /app /config
+COPY . /config
 EXPOSE 80
 CMD [ "node", "server.js" ]

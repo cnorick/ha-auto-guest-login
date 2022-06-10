@@ -45,7 +45,7 @@
     </style>
 
 <script>
-    const minTime = process.env.TIME; // So guests can enjoy your welcome page before being redirected.
+    const minTime = 10000; // So guests can enjoy your welcome page before being redirected.
     const startTime = (new Date()).getTime();
     fetch('/api/getRedirectUri')
     .then(res => res.text())

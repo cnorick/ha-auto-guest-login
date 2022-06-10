@@ -4,8 +4,8 @@ import express from "express"
 const haUrl = "http://homeassistant.local:8123";
 const clientId = "http://homeassistant.local:8123/";
 const dashboard = "lovelace-test";
-const guestUserName = ${{ secrets.HA_USER }};
-const guestPassword = ${{ secrets.HA_PW }};
+const guestUserName = "guest";
+const guestPassword = "guest";
 const port = 80;
 
 function getState() {

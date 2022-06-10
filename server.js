@@ -1,11 +1,11 @@
 import fetch from "node-fetch"
 import express from "express"
 
-const haUrl = "http://homeassistant.local:8123";
-const clientId = "http://homeassistant.local:8123/";
-const dashboard = "lovelace-test";
-const guestUserName = "guest";
-const guestPassword = "guest";
+const haUrl = process.env.URL;
+const clientId = process.env.CLIENTID;
+const dashboard = process.env.DASH;
+const guestUserName = process.env.USER;
+const guestPassword = process.env.PASS;
 const port = 80;
 
 function getState() {

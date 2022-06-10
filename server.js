@@ -1,5 +1,5 @@
-import fetch from "node-fetch"
-import express from "express"
+import fetch from "/app/node_modules/node-fetch"
+import express from "/app/node_modules/express"
 
 const haUrl = "http://homeassistant.local:8123";
 const clientId = "http://homeassistant.local:8123/";

@@ -6,7 +6,7 @@ const clientId = process.env.CLIENTID;
 const dashboard = process.env.DASH;
 const guestUserName = process.env.USER;
 const guestPassword = process.env.PASS;
-const port = process.env.PORT;
+const port = 80;
 
 function getState() {
   const state = {

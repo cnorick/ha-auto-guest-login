@@ -1,12 +1,15 @@
 # ha-auto-guest-login
+
 A server logs guests into Home Assistant automatically.
-For more info, see https://nathanorick.com/ha-automatic-guest-login.
+For more info, see <https://nathanorick.com/ha-automatic-guest-login>.
 
 ## Container Installation
 
 Here are some example snippets to help you get started creating a container.
 
-### docker-compose 
+### docker-compose
+
+You can copy the following into a `docker-compose.yml` file locally, change the environment variables to match your setup, then run `docker-compose up` to start the service.
 
 ```yaml
 ---
@@ -50,6 +53,6 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 80` | WebUI |
 | `-e CLIENTID=http://homeassistant.local/` | Usually matches URL. You can verify by looking in the browser's network tab for the request to `<homeassistantUrl>/auth/login_flow/` when you first log into home assistant. You may need to click "Preserve Log" since the page navigates away immediately. |
 | `-e URL=http://homeassistant.local` | URL of Home Assistant instance |
-| `-e DASH=lovelace-guest` | Home Assistant Dashboard to automatically be directed to. In this example setup: http://homeassistant.local/guest-dashboard |
+| `-e DASH=lovelace-guest` | Home Assistant Dashboard to automatically be directed to. In this example setup: <http://homeassistant.local/guest-dashboard> |
 | `-e USER=username` | Home Assistant user that is automatically logged into |
 | `-e PASS=password` | Password of Home Assistant user above |

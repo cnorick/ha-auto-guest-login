@@ -13,7 +13,7 @@ Here are some example snippets to help you get started creating a container.
 version: "3"
 services:
   ha-auto-guest-login:
-    image: norick/ha-auto-guest-login:latest
+    image: norick/ha-auto-guest-login:main
     container_name: ha-auto-guest-login
     environment:
       - CLIENTID=http://homeassistant.local/
@@ -38,7 +38,7 @@ docker run -d \
   -e PASS=password \
   -p 80:80 \
   --restart unless-stopped \
-  norick/ha-auto-guest-login:latest
+  norick/ha-auto-guest-login:main
 ```
 
 ## Parameters

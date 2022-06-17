@@ -13,7 +13,7 @@ Here are some example snippets to help you get started creating a container.
 version: "3"
 services:
   ha-auto-guest-login:
-    image: cnorick/ha-auto-guest-login:main
+    image: norick/ha-auto-guest-login:latest
     container_name: ha-auto-guest-login
     environment:
       - CLIENTID=http://homeassistant.local/
@@ -38,7 +38,7 @@ docker run -d \
   -e PASS=password \
   -p 80:80 \
   --restart unless-stopped \
-  cnorick/ha-auto-guest-login:main
+  norick/ha-auto-guest-login:latest
 ```
 
 ## Parameters
@@ -48,7 +48,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | Parameter | Function |
 | :----: | --- |
 | `-p 80` | WebUI |
-| `-e CLIENTID=http://homeassistant.local/` | not sure |
+| `-e CLIENTID=http://homeassistant.local/` | Usually matches URL. You can verify by looking in the browser's network tab for the request to `<homeassistantUrl>/auth/login_flow/` when you first log into home assistant. You may need to click "Preserve Log" since the page navigates away immediately. |
 | `-e URL=http://homeassistant.local` | URL of Home Assistant instance |
 | `-e DASH=lovelace-guest` | Home Assistant Dashboard to automatically be directed to. In this example setup: http://homeassistant.local/guest-dashboard |
 | `-e USER=username` | Home Assistant user that is automatically logged into |

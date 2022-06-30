@@ -51,8 +51,24 @@ Container images are configured using parameters passed at runtime (such as thos
 | Parameter | Function |
 | :----: | --- |
 | `-p 80` | WebUI |
-| `-e CLIENTID=http://homeassistant.local/` | Usually matches URL. You can verify by looking in the browser's network tab for the request to `<homeassistantUrl>/auth/login_flow/` when you first log into home assistant. You may need to click "Preserve Log" since the page navigates away immediately. |
+| `-e CLIENTID=http://homeassistant.local/` | Usually matches URL. See [Getting ClientId](#getting-clientid) for instructions on finding it |
 | `-e URL=http://homeassistant.local` | URL of Home Assistant instance |
 | `-e DASH=lovelace-guest` | Home Assistant Dashboard to automatically be directed to. In this example setup: <http://homeassistant.local/guest-dashboard> |
 | `-e USER=username` | Home Assistant user that is automatically logged into |
 | `-e PASS=password` | Password of Home Assistant user above |
+
+
+### Getting ClientId
+1. Log out of Home Assistant
+1. In Chrome, press F12 to open dev tools, then navigate to the Network Tab
+1. Check the "Preserve Log" option
+  ![image](https://user-images.githubusercontent.com/11449043/176753310-7d9bb1d2-a7c7-4f4b-89d4-d5d8043be4b2.png)
+1. Navigate to your Home Assistant Url
+1. Log in (you can use incorrect credentials so you don't get redirected)
+1. Look in the Network tab for a fetch request made to a random string of characters
+  ![image](https://user-images.githubusercontent.com/11449043/176753919-04ac4e9b-1b1b-411c-8a43-98d93923d0a4.png)
+1. Click that request and check that it was made to /auth/login_flow
+  ![image](https://user-images.githubusercontent.com/11449043/176754069-c307e08b-8972-4e31-8072-d601fa082fbd.png)
+1. Open the "Payload" tab and find the clientId
+
+

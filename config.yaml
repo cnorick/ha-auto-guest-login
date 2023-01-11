@@ -1,0 +1,13 @@
+name: "Guest Login"
+description: "A web server that provides an easy way for guests to get access to Home Assistant"
+version: "0.0.1"
+slug: "easy-guest-login"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i368
+ports:
+  80/tcp: 8675

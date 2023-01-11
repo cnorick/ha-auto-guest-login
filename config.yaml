@@ -3,6 +3,7 @@ description: "A web server that provides an easy way for guests to get access to
 version: "0.0.1"
 slug: "easy-guest-login"
 init: false
+image: "norick/image-{arch}-ha-guest-login-addon"
 arch:
   - aarch64
   - amd64

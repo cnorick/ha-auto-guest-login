@@ -14,5 +14,4 @@ jobs:
         with:
           args: |
             --test \
-            --all \
-            --target .
+            --all

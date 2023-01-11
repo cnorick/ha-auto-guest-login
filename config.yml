@@ -9,6 +9,6 @@ arch:
   - amd64
   - armhf
   - armv7
-  - i368
+  - i386
 ports:
   80/tcp: 8675

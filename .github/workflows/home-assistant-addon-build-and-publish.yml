@@ -22,5 +22,5 @@ jobs:
         with:
           args: |
             --all \
-            --target . \
+            --target ha-auto-guest-login \
             --docker-hub ${{ secrets.DOCKER_USERNAME }}

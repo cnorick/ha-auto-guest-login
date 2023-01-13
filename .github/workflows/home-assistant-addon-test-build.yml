@@ -15,5 +15,5 @@ jobs:
           args: |
             --test \
             --all \
-            --target . \
+            --target ha-auto-guest-login \
             --docker-hub norick/ha-guest-login-addon

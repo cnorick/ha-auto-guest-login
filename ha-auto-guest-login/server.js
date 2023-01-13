@@ -60,7 +60,6 @@ async function getFlowId(haUrl) {
 
 async function getCode(haUrl) {
   const flowId = await getFlowId(haUrl);
-  console.log('flowId', flowId);
   const response = await fetch(
     `${haUrl}/auth/login_flow/${flowId}`,
     {
@@ -99,7 +98,6 @@ function createRedirectUri(haUrl, code) {
 
 async function getRedirectUri(haUrl) {
   var code = await getCode(haUrl);
-  console.log('code:', code)
   var uri = createRedirectUri(haUrl, code);
   return uri;
 }

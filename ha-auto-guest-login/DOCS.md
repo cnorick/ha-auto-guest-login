@@ -28,10 +28,10 @@ Before leaving the dashboard, copy down the path of the dashboard. That is, get 
 
 Now, you're ready to add the config params. Click the Configuration tab in the add-on menu.
 
-*guest_username*: the username of the guest user you created earlier
-*guest_password*: the password of the guest account. (Don't worry, this information doesn't leave your local network. You can verify in the source code.).
-*guest_dashboard_path*: This is the path of your guest dashboard (don't include the leading slash).
-*port*: This is the port at which your web server is available.
+- *guest_username*: the username of the guest user you created earlier
+- *guest_password*: the password of the guest account. (Don't worry, this information doesn't leave your local network. You can verify in the source code.).
+- *guest_dashboard_path*: This is the path of your guest dashboard (don't include the leading slash).
+- *port*: This is the port at which your web server is available.
 
 ## Start and Test
 

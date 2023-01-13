@@ -18,3 +18,5 @@ The longer way:
 8. Click Add
 9. Find the addon in the store list under the newly-added section (you may have to refresh)
 10. Click on the addon and install
+
+More info in [ha-auto-guest-login](ha-auto-guest-login/README.md).

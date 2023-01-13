@@ -4,6 +4,7 @@ version: "0.0.1"
 slug: "ha-auto-guest-login"
 init: false
 image: "norick/image-{arch}-ha-auto-guest-login-addon"
+codenotary: cnathanorick@gmail.com
 url: https://github.com/cnorick/ha-auto-guest-login
 arch:
   - aarch64
@@ -13,7 +14,6 @@ arch:
   - i386
 hassio_api: true
 hassio_role: default
-panel_icon: account-supervisor-circle-outline
 
 ports:
   80/tcp: 8675

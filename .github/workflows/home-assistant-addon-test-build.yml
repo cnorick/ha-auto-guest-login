@@ -1,0 +1,22 @@
+name: "Home Assistant Addon Test Build"
+
+on: [pull_request]
+
+env:
+  CAS_API_KEY: ${{ secrets.CAS_API_KEY }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Run Test build
+        uses: home-assistant/builder@master
+        with:
+          args: |
+            --test \
+            --all \
+            --target ha-auto-guest-login \
+            --docker-hub norick/ha-guest-login-addon

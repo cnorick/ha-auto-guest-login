@@ -3,7 +3,6 @@ name: "Home Assistant Addon Build and Publish"
 on:
   push:
     branches: [ "main" ]
-  pull_request:
 
 env:
   CAS_API_KEY: ${{ secrets.CAS_API_KEY }}

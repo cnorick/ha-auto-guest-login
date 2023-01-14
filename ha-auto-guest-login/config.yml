@@ -24,8 +24,14 @@ options:
   guest_username:
   guest_password:
   guest_dashboard_path: lovelace/default_view
+  welcome_screen_delay_ms: 3000
+  welcome_screen_main_text: Thanks for Visiting
+  welcome_screen_secondary_text: Redirecting to Home Assistant...
 
 schema:
   guest_username: str
   guest_password: password
   guest_dashboard_path: str
+  welcome_screen_delay_ms: int(0,)
+  welcome_screen_main_text: str
+  welcome_screen_secondary_text: str

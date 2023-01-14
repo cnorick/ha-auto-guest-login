@@ -30,8 +30,12 @@ Now, you're ready to add the config params. Click the Configuration tab in the a
 
 - *guest_username*: the username of the guest user you created earlier
 - *guest_password*: the password of the guest account. (Don't worry, this information doesn't leave your local network. You can verify in the source code.).
-- *guest_dashboard_path*: This is the path of your guest dashboard (don't include the leading slash).
-- *port*: This is the port at which your web server is available.
+- *guest_dashboard_path*: the path of your guest dashboard (don't include the leading slash).
+- *port*: the port at which your web server is available.
+- *welcome_screen_delay_ms*: amount of time in milliseconds to delay on the welcome screen before redirecting to Home Assistant.
+This gives guests time to read the welcome screen.
+- *welcome_screen_main_text*: the large text that appears on the welcome screen
+- *welcome_screen_secondary_text*: the text that appears below the main text on the welcome screen
 
 ## Start and Test
 

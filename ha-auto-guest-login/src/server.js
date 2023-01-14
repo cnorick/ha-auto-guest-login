@@ -6,6 +6,9 @@ import { HaClient } from "./ha-client.js";
 const dashboard = config.guest_dashboard_path;
 const guestUserName = config.guest_username;
 const guestPassword = config.guest_password;
+const welcomeScreenDelay = config.welcome_screen_delay_ms;
+const welcomeScreenMainText = config.welcome_screen_main_text;
+const welcomeScreenSecondaryText = config.welcome_screen_secondary_text;
 const supervisorToken = process.env.SUPERVISOR_TOKEN; 
 const haClient = new HaClient(supervisorToken);
 const haPort = await haClient.getHaPort();
@@ -13,19 +16,25 @@ const haPort = await haClient.getHaPort();
 const authClient = new AuthClient(guestUserName, guestPassword);
 
 const app = express();
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.sendFile("index.html", { root: '.' });
-})
+  res.render("pages/guest-welcome", { 
+    delay: welcomeScreenDelay,
+    mainText: welcomeScreenMainText,
+    secondaryText: welcomeScreenSecondaryText
+  });
+});
+
 app.get('/api/getRedirectUri', async (req, res) => {
   const haUrl = `${req.protocol}://${req.hostname}:${haPort}`;
   console.log('recieved request from', `${req.protocol}://${req.hostname}`);
   console.log('redirecting to', `${haUrl}/${dashboard}`);
 
   res.send(await authClient.getRedirectUri(haUrl, dashboard));
-})
+});
 
 const port = 80;
 app.listen(port, () => {
   console.log(`HomeAssistant is on port ${haPort}`);
-})
+});

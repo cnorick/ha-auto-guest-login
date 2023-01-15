@@ -1,6 +1,6 @@
 name: "Auto Guest Login"
 description: "A web server that provides an easy way for guests to get access to Home Assistant"
-version: "1.1.0"
+version: "1.2.0"
 slug: "ha-auto-guest-login"
 init: false
 image: "norick/image-{arch}-ha-auto-guest-login-addon"
@@ -14,6 +14,7 @@ arch:
   - i386
 hassio_api: true
 hassio_role: default
+homeassistant_api: true
 
 ports:
   80/tcp: 8675
@@ -32,6 +33,6 @@ schema:
   guest_username: str
   guest_password: password
   guest_dashboard_path: str
-  welcome_screen_delay_ms: int(0,)
-  welcome_screen_main_text: str
-  welcome_screen_secondary_text: str
+  welcome_screen_delay_ms: int(0,)?
+  welcome_screen_main_text: str?
+  welcome_screen_secondary_text: str?

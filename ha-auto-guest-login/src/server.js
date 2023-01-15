@@ -6,9 +6,9 @@ import { HaClient } from "./ha-client.js";
 const dashboard = config.guest_dashboard_path;
 const guestUserName = config.guest_username;
 const guestPassword = config.guest_password;
-const welcomeScreenDelay = config.welcome_screen_delay_ms;
-const welcomeScreenMainText = config.welcome_screen_main_text;
-const welcomeScreenSecondaryText = config.welcome_screen_secondary_text;
+const welcomeScreenDelay = config.welcome_screen_delay_ms ?? 3000;
+const welcomeScreenMainText = config.welcome_screen_main_text ?? 'Thanks for Visiting';
+const welcomeScreenSecondaryText = config.welcome_screen_secondary_text ?? 'Redirecting to Home Assistant...';
 const supervisorToken = process.env.SUPERVISOR_TOKEN; 
 const haClient = new HaClient(supervisorToken);
 const haPort = await haClient.getHaPort();
@@ -18,7 +18,8 @@ const authClient = new AuthClient(guestUserName, guestPassword);
 const app = express();
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  await haClient.postLoginEvent(req);
   res.render("pages/guest-welcome", { 
     delay: welcomeScreenDelay,
     mainText: welcomeScreenMainText,
@@ -34,7 +35,7 @@ app.get('/api/getRedirectUri', async (req, res) => {
   res.send(await authClient.getRedirectUri(haUrl, dashboard));
 });
 
-const port = 80;
-app.listen(port, () => {
-  console.log(`HomeAssistant is on port ${haPort}`);
+const internalPort = 80;
+app.listen(internalPort, () => {
+  console.log(`HomeAssistant found on port ${haPort}`);
 });

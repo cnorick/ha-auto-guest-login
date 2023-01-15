@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0
+
+### Added
+- Fires an event so that automations can respond to guest login
+
+### Changed
+- Made some configuration parameters optional
+
 ## 1.1.0
 
 ### Added

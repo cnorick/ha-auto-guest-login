@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        body {
+            background-color: #fedb5b;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+        }
+        h1 {
+            font-size: 3em;
+        }
+        .logo-image {
+            width: 130px;
+            height: auto;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .spacer {
+            width: 130px;
+        }
+        .main-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .content-text {
+            align-self: flex-start;
+            margin-left: 1.5em;
+            margin-right: 1.5em;
+            margin-top: .5em;
+            margin-bottom: .5em;
+            font-size: 1.2em;
+            width: 90%;
+        }
+        .qr-code img {
+            width: 400px;
+        }
+        .warning {
+            max-width: 60vw;
+            border: 2px solid #ff5722;
+            border-radius: 5px;
+            background-color: #ff845e;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="image-container">
+            <img class="logo-image" src="admin/assets/logo.png"/>
+        </div>
+        <h1>Admin</h1>
+        <span class="spacer"></span>
+    </div>
+    <div class="main-content">
+        <div class="warning">Note: This page must be accessed from your local Home Assistant url. If you access this from an external url, the link and QR code will not be correct.</div>
+        <p class="content-text">
+            Guest Login Url: <a href="<%= guestLoginUrl %>"><%= guestLoginUrl %></a>
+        </p>
+        <p class="content-text">This QR an be shared with your guests to make it easier to log into Home Assistant.</p>
+        <p class="content-text">Click the QR code to open image for printing.</p>
+        <a href="admin/qr.svg" class="qr-code">
+            <img src="admin/qr.svg">
+        </a>
+    </div>
+</body>

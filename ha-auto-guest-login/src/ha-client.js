@@ -22,6 +22,16 @@ export class HaClient {
     }
   }
 
+  async getAddOnPort() {
+    const res = await this.#fetch('http://supervisor/addons/self/info');
+    if (!res.ok) {
+      console.log('unable to get the add-on configuration');
+    }
+
+    const body = await res.json();
+    return body.data.network['80/tcp'];
+  }
+
   async postLoginEvent(req) {
     const event = 'ha_auto_login_guest_logged_in';
     const body = { ip: req?.ip };

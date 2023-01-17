@@ -46,6 +46,14 @@ Now you're ready to press the start button on the add-on page. After starting, y
 
 To test, do the following (chrome-specific instructions):
 
+1. On the Info tab, press the Open Web UI button
+    - This will open the Admin page
+2. On the admin page, you should see a url and a QR code
+3. Click the url or scan the QR code
+4. If everything works correctly, you should see the welcome page, then be redirected to your guest dashboard logged in as a guest
+
+#### Manual Testing
+
 1. Open an incognito window (or equivalent)
 2. Paste your home assistant address in the url bar. Mine is http://homeassistant.local. Your's may be an ip address or include a port at the end. e.g. http://homeassistant.local:8888 or 192.168.1.55.
 3. Before pressing enter, add the port from the configuration tab (default is 8675). So my url becomes http://homeassistant.local:8675

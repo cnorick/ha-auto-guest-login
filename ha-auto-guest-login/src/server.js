@@ -34,7 +34,7 @@ app.use('/admin/assets', express.static('assets'));
 
 app.get('/admin', (req, res) => {
   res.render('pages/admin', {
-    guestLoginUrl: `${req.protocol}://${req.hostname}`
+    guestLoginUrl: `${utils.getGuestLoginUrl(req)}`
   });
 });
 

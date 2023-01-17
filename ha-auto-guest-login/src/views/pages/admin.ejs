@@ -36,14 +36,11 @@
             font-size: 1.2em;
             width: 90%;
         }
-        .qr-code {
-            width: 60%;
-        }
         .qr-code img {
-            max-height: 50vh;
+            width: 400px;
         }
         .warning {
-            width: 60vw;
+            max-width: 60vw;
             border: 2px solid #ff5722;
             border-radius: 5px;
             background-color: #ff845e;
@@ -54,7 +51,7 @@
 <body>
     <div class="header-container">
         <div class="image-container">
-            <img class="logo-image" src="/admin/assets/logo.png"/>
+            <img class="logo-image" src="admin/assets/logo.png"/>
         </div>
         <h1>Admin</h1>
         <span class="spacer"></span>
@@ -66,8 +63,8 @@
         </p>
         <p class="content-text">This QR an be shared with your guests to make it easier to log into Home Assistant.</p>
         <p class="content-text">Click the QR code to open image for printing.</p>
-        <a href="/admin/qr.svg" class="qr-code">
-            <img src="/admin/qr.svg">
+        <a href="admin/qr.svg" class="qr-code">
+            <img src="admin/qr.svg">
         </a>
     </div>
 </body>

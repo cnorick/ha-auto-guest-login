@@ -23,13 +23,13 @@ export class HaClient {
   }
 
   async getAddOnPort() {
-    const res = this.#fetch('http://supervisor/addons/self/info');
+    const res = await this.#fetch('http://supervisor/addons/self/info');
     if (!res.ok) {
       console.log('unable to get the add-on configuration');
     }
 
-    const body = await res.json()
-    return body.network['80/tcp'];
+    const body = await res.json();
+    return body.data.network['80/tcp'];
   }
 
   async postLoginEvent(req) {

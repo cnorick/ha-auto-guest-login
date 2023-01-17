@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0
+
+### Added
+- Add Admin page including:
+    - the url to the auto guest login page
+    - a qr that points to the page
+
 ## 1.2.0
 
 ### Added

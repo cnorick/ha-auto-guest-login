@@ -14,7 +14,7 @@ const welcomeScreenSecondaryText = config.welcome_screen_secondary_text ?? 'Redi
 const supervisorToken = process.env.SUPERVISOR_TOKEN;
 const haClient = new HaClient(supervisorToken);
 const haPort = await haClient.getHaPort();
-const addonPort = await haClient.getAddonPort();
+const addonPort = await haClient.getAddOnPort();
 
 const authClient = new AuthClient(guestUserName, guestPassword);
 const utils = new Utils()

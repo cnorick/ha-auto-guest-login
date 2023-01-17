@@ -17,7 +17,7 @@ const haPort = await haClient.getHaPort();
 const addonPort = await haClient.getAddOnPort();
 
 const authClient = new AuthClient(guestUserName, guestPassword);
-const utils = new Utils()
+const utils = new Utils(addonPort);
 const app = express();
 app.set('view engine', 'ejs');
 

@@ -15,6 +15,10 @@ arch:
 hassio_api: true
 hassio_role: default
 homeassistant_api: true
+ingress: true
+ingress_entry: admin
+ingress_port: 80
+panel_icon: mdi:taco
 
 ports:
   80/tcp: 8675

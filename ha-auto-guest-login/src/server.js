@@ -2,6 +2,7 @@ import express from "express"
 import config from '/data/options.json' assert { type: 'json' };
 import { AuthClient } from "./auth-client.js";
 import { HaClient } from "./ha-client.js";
+import QRCode from 'qrcode';
 
 const dashboard = config.guest_dashboard_path;
 const guestUserName = config.guest_username;
@@ -25,6 +26,16 @@ app.get('/', async (req, res) => {
     mainText: welcomeScreenMainText,
     secondaryText: welcomeScreenSecondaryText
   });
+});
+
+app.get('/admin', (req, res) => {
+  res.render('pages/admin');
+});
+
+app.get('/admin/qr.svg', async (req, res) => {
+  const qrCode = await QRCode.toString('foobar', { type: 'svg' });
+  res.set('Content-Type', 'image/svg+xml');
+  res.send(qrCode);
 });
 
 app.get('/api/getRedirectUri', async (req, res) => {

@@ -45,7 +45,8 @@ app.get('/admin/qr.svg', async (req, res) => {
 });
 
 app.get('/api/getRedirectUri', async (req, res) => {
-  const haUrl = `${req.protocol}://${req.hostname}:${haPort}`;
+  const portString = [443, 80].includes(haPort) ? '' : `:${haPort}`;
+  const haUrl = `${req.protocol}://${req.hostname}${portString}`;
   console.log('recieved request from', `${req.protocol}://${req.hostname}`);
   console.log('redirecting to', `${haUrl}/${dashboard}`);
 

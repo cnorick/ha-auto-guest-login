@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2
+### Fixed
+- Fix issue where login flow doesn't work if your home assisant instance uses default ports (80, 443)
+
 ## 1.3.0
 
 ### Added

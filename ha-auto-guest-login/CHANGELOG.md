@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+### Added
+- Add advanced configuration parameters
+    - they allow you to specify internal and redirect URLs explicitly
+    - we no longer have to always relay on where the request was made from
+
 ## 1.3.2
 ### Fixed
 - Fix issue where login flow doesn't work if your home assisant instance uses default ports (80, 443)

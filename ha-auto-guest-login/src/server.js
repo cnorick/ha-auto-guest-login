@@ -11,6 +11,8 @@ const guestPassword = config.guest_password;
 const welcomeScreenDelay = config.welcome_screen_delay_ms ?? 3000;
 const welcomeScreenMainText = config.welcome_screen_main_text ?? 'Thanks for Visiting';
 const welcomeScreenSecondaryText = config.welcome_screen_secondary_text ?? 'Redirecting to Home Assistant...';
+const internalHaUrlFromConfig = config.advanced_internal_base_ha_url_and_port || null; // empty string by default.
+const redirectBaseUrlFromConfig = config.advanced_redirect_base_ha_url_and_port || null; // empty string by default.
 const supervisorToken = process.env.SUPERVISOR_TOKEN;
 const haClient = new HaClient(supervisorToken);
 const haPort = await haClient.getHaPort();
@@ -47,10 +49,17 @@ app.get('/admin/qr.svg', async (req, res) => {
 app.get('/api/getRedirectUri', async (req, res) => {
   const portString = [443, 80].includes(haPort) ? '' : `:${haPort}`;
   const haUrl = `${req.protocol}://${req.hostname}${portString}`;
-  console.log('recieved request from', `${req.protocol}://${req.hostname}`);
-  console.log('redirecting to', `${haUrl}/${dashboard}`);
+  const internalUrl = internalHaUrlFromConfig ?? haUrl;
+  const redirectBaseUrl = redirectBaseUrlFromConfig ?? haUrl;
+  console.log('recieved request from:', `${req.protocol}://${req.hostname}`);
+  console.log('using internal url:', internalUrl);
+  console.log('using redirect baseUrl:', redirectBaseUrl);
 
-  res.send(await authClient.getRedirectUri(haUrl, dashboard));
+  const redirectUri = await authClient.getRedirectUri(internalUrl, redirectBaseUrl, dashboard)
+  console.log('sending redirect uri to client');
+  console.log(`\tredirectUri: ${redirectUri}`);
+  console.log('\n--------\n');
+  res.send(redirectUri);
 });
 
 const internalPort = 80;

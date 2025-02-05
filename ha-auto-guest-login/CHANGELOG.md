@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+### Fixed
+- switch to reading config with fs to avoid problems with importing in new node versions
+
 ## 1.4.0
 ### Added
 - Add advanced configuration parameters

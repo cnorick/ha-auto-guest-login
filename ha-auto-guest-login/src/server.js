@@ -1,9 +1,12 @@
+import fs from 'node:fs';
 import express from "express"
-import config from '/data/options.json' assert { type: 'json' };
 import { AuthClient } from "./auth-client.js";
 import { HaClient } from "./ha-client.js";
 import { Utils } from "./utils.js";
 import QRCode from 'qrcode';
+
+const configPath = '/data/options.json';
+const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
 const dashboard = config.guest_dashboard_path;
 const guestUserName = config.guest_username;

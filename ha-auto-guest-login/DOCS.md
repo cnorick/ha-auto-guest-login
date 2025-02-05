@@ -62,6 +62,10 @@ To test, do the following (chrome-specific instructions):
 4. Press enter. You should be greeted with a temporary welcome page then redirected to the guest dashboard in home assistant.
 5. If that doesn't work, check the logs
 
+#### Override dashboard url
+
+You can override the dashboard url by appending `?dashboard={dashboard-name}` or `?d={dashboard-name}` to the end of the url. Replace `{dashboard-name}` with the name of the dashboard you want to redirect to.
+
 ## Running Automations when Guests Log In
 
 Creating automations based on this add-on is really easy. When guests log in, the add-on emits a `ha_auto_login_guest_logged_in' event with some guest user data.

@@ -53,6 +53,13 @@
         const endTime = (new Date()).getTime();
         const elapsedTime = endTime - startTime;
         const delay = Math.max(minTime - elapsedTime, 0);
+        const urlParams = new URLSearchParams(window.location.search);
+        const dashboardPath = urlParams.get('dashboard') || urlParams.get('d');
+        if (dashboardPath) {
+            const uriObj = new URL(uri);
+            uriObj.pathname = dashboardPath;
+            uri = uriObj.toString();
+        }
         setTimeout(() => window.location.replace(uri), delay);
     });
 </script>

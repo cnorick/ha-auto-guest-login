@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0
+### Added
+- Redirect to a different dashboard by providing a `d=<dashboard>` query parameter in the link
+
 ## 1.4.1
 ### Fixed
 - switch to reading config with fs to avoid problems with importing in new node versions
